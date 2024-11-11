@@ -13,16 +13,16 @@ os.makedirs('files', exist_ok=True)
 
 bucket_name = 'project1-photo-app'
 storage_client = storage.Client()
-genai.configure(api_key="API KEY")
+genai.configure(api_key="AIzaSyBK0wOHXu-5Rf1PhxkYvfKygV732VQ6wQk")
 
 firebase_config = {
-    "apiKey": "API KEY",
-    "authDomain": "DOMAIN URL",
-    "databaseURL": "DATABSE URL",
-    "projectId": "PROJECT ID",
-    "storageBucket": "BUCKET URL",
-    "messagingSenderId": "SENDER ID",
-    "appId": "APP ID"
+    "apiKey": "AIzaSyBwP_hD3VuY-k2bA1DWCd32d2LL9h8o43Y",
+    "authDomain": "python-hello-world-435919.firebaseapp.com",
+    "databaseURL": "https://python-hello-world-435919-default-rtdb.firebaseio.com",
+    "projectId": "python-hello-world-435919",
+    "storageBucket": "python-hello-world-435919.appspot.com",
+    "messagingSenderId": "40868696838",
+    "appId": "1:40868696838:web:ba8c2d7c469632a2fc8487"
 }
 
 firebase = pyrebase.initialize_app(firebase_config)
