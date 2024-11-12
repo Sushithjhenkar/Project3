@@ -7,11 +7,17 @@ import google.generativeai as genai
 import pyrebase
 
 app = Flask(__name__)
-genai.configure(api_key=os.environ.get("GENAI_API_KEY"))
+app.secret_key = "SixtyNine"
+
+os.makedirs('files', exist_ok=True)
+
+bucket_name = 'project1-photo-app'
+storage_client = storage.Client()
+genai.configure(api_key="AIzaSyBK0wOHXu-5Rf1PhxkYvfKygV732VQ6wQk")
 
 # Firebase configuration
 firebase_config = {
-    "apiKey": os.environ.get("FIREBASE_API_KEY"),
+    "apiKey": os.environ.get("AIzaSyBwP_hD3VuY-k2bA1DWCd32d2LL9h8o43Y"),
     "authDomain": "python-hello-world-435919.firebaseapp.com",
     "databaseURL": "https://python-hello-world-435919-default-rtdb.firebaseio.com",
     "projectId": "python-hello-world-435919",
@@ -99,7 +105,7 @@ def generate_description(image_file):
             {"role": "user", "parts": [image_file, "Generate a title and a description."]},
         ]
     )
-    response = chat_session.send_message("Generate a title and description based on the uploaded image.")
+    response = chat_session.send_message("Please provide a description based on the image.")
     try:
         parsed_response = json.loads(response.text)
         title = parsed_response.get("title", "No Title Available")
