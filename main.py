@@ -6,17 +6,22 @@ from google.cloud import storage
 import google.generativeai as genai
 import pyrebase
 
+keys_file = os.path.join(os.getcwd(), 'keys.json')
+
+with open(keys_file) as file:
+    keys = json.load(file)
+
 app = Flask(__name__)
-app.secret_key = "your-secret-key"
+app.secret_key = keys['app_key']
 
 os.makedirs('files', exist_ok=True)
 
 bucket_name = 'project1-photo-app'
 storage_client = storage.Client()
-genai.configure(api_key="AIzaSyBK0wOHXu-5Rf1PhxkYvfKygV732VQ6wQk")
+genai.configure(api_key=keys['genai_api_key'])
 
 firebase_config = {
-    "apiKey": "AIzaSyBwP_hD3VuY-k2bA1DWCd32d2LL9h8o43Y",
+    "apiKey": keys['firebase_api_key'],
     "authDomain": "python-hello-world-435919.firebaseapp.com",
     "databaseURL": "https://python-hello-world-435919-default-rtdb.firebaseio.com",
     "projectId": "python-hello-world-435919",
