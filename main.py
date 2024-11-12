@@ -19,7 +19,6 @@ firebase_config = {
     "messagingSenderId": "40868696838",
     "appId": "1:40868696838:web:ba8c2d7c469632a2fc8487"
 }
-firebase = pyrebase.initialize_app(firebase_config)
 
 firebase = pyrebase.initialize_app(firebase_config)
 auth = firebase.auth()
@@ -100,7 +99,7 @@ def generate_description(image_file):
             {"role": "user", "parts": [image_file, "Generate a title and a description."]},
         ]
     )
-    response = chat_session.send_message("INSERT_INPUT_HERE")
+    response = chat_session.send_message("Generate a title and description based on the uploaded image.")
     try:
         parsed_response = json.loads(response.text)
         title = parsed_response.get("title", "No Title Available")
